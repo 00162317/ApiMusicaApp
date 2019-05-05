@@ -1,0 +1,35 @@
+package com.example.apimusicaapp
+
+import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.example.apimusicaapp.model.Cancion
+import kotlinx.android.synthetic.main.activity_adapter.view.*
+
+class Adapter(var items: List<Cancion>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int):
+            ViewHolder = ViewHolder(
+        LayoutInflater.from(p0.context)
+            .inflate(R.layout.activity_adapter, p0, false)
+    )
+
+    override fun getItemCount() = items.size
+
+    override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
+        p0.pasarValores(items[p1])
+    }
+    fun setData(items:List<Cancion>){
+        this.items=items
+        notifyDataSetChanged()
+    }
+    class ViewHolder(var item: View) : RecyclerView.ViewHolder(item) {
+        fun pasarValores(objeto:Cancion)= with(item){
+            nombre_song.text=objeto.name
+            artista_song.text=objeto.artista
+        }
+    }
+
+}
