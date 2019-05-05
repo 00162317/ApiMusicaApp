@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.example.apimusicaapp.adapter.Adapter
+import com.example.apimusicaapp.adapter.Viewer
 import com.example.apimusicaapp.model.Cancion
 import com.example.apimusicaapp.utils.NetworkUtils
 import com.example.apimusicaapp.utils.SongSerializer
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         SongFetch().execute()
     }
     fun itemClick(item:Cancion){
-        startActivity(Intent(this,Viewer::class.java))
+        startActivity(Intent(this, Viewer::class.java))
     }
     inner class SongFetch : AsyncTask<Unit, Unit, List<Cancion>>() {
         override fun doInBackground(vararg params: Unit?): List<Cancion> {
