@@ -20,14 +20,16 @@ class Adapter(var items: List<Cancion>) : RecyclerView.Adapter<Adapter.ViewHolde
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         p0.pasarValores(items[p1])
     }
-    fun setData(items:List<Cancion>){
-        this.items=items
+
+    fun setData(items: List<Cancion>) {
+        this.items = items
         notifyDataSetChanged()
     }
+
     class ViewHolder(var item: View) : RecyclerView.ViewHolder(item) {
-        fun pasarValores(objeto:Cancion)= with(item){
-            nombre_song.text=objeto.name
-            artista_song.text=objeto.artista
+        fun pasarValores(objeto: Cancion) = with(item) {
+            nombre_song.text = objeto.name
+            artista_song.text = objeto.artista
         }
     }
 

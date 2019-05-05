@@ -26,32 +26,34 @@ class MainActivity : AppCompatActivity() {
         viewAdapter = Adapter(listOf<Cancion>())
 
         recyclerXML.apply {
-            adapter=viewAdapter
-            layoutManager=viewManager
+            adapter = viewAdapter
+            layoutManager = viewManager
         }
         SongFetch().execute()
     }
-    inner class SongFetch:AsyncTask<Unit,Unit,List<Cancion>>(){
+
+    inner class SongFetch : AsyncTask<Unit, Unit, List<Cancion>>() {
         override fun doInBackground(vararg params: Unit?): List<Cancion> {
-            val url =  NetworkUtils.buildURL()
-            val resultString=NetworkUtils.getHTTPResult(url)
+            val url = NetworkUtils.buildURL()
+            val resultString = NetworkUtils.getHTTPResult(url)
 
             val resultJSON = JSONObject(resultString)
 
-            return if(resultJSON.getBoolean("ok")){
-                SongSerializer.parseSongs(resultJSON.getJSONArray("parametro").toString()
+            return if (resultJSON.getBoolean("ok")) {
+                SongSerializer.parseSongs(
+                    resultJSON.getJSONArray("parametro").toString()
                 )
-            }else{
+            } else {
                 listOf<Cancion>()
             }
         }
 
         override fun onPostExecute(result: List<Cancion>?) {
             if (result != null) {
-                if(result.isNotEmpty()){
+                if (result.isNotEmpty()) {
                     viewAdapter.setData(result)
-                }else{
-                    Log.d("Holi","No se pudo encontrar los datos")
+                } else {
+                    Log.d("Holi", "No se pudo encontrar los datos")
                 }
             }
         }
