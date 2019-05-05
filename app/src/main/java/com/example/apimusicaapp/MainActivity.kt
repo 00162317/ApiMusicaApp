@@ -1,5 +1,6 @@
 package com.example.apimusicaapp
 
+import android.content.Intent
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         viewManager = LinearLayoutManager(this)
 
-        viewAdapter = Adapter(listOf<Cancion>())
+        viewAdapter = Adapter(listOf<Cancion>(),{variable:Cancion->itemClick(variable)})
 
         recyclerXML.apply {
             adapter = viewAdapter
@@ -31,7 +32,9 @@ class MainActivity : AppCompatActivity() {
         }
         SongFetch().execute()
     }
-
+    fun itemClick(item:Cancion){
+        startActivity(Intent(this,Viewer::class.java))
+    }
     inner class SongFetch : AsyncTask<Unit, Unit, List<Cancion>>() {
         override fun doInBackground(vararg params: Unit?): List<Cancion> {
             val url = NetworkUtils.buildURL()
