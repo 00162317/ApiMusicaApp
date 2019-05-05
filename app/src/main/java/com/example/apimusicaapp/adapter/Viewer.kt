@@ -8,6 +8,7 @@ import com.example.apimusicaapp.R
 import com.example.apimusicaapp.model.Cancion
 import com.example.apimusicaapp.utils.NetworkUtils
 import com.example.apimusicaapp.utils.SongSerializer
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_adapter.*
 import kotlinx.android.synthetic.main.activity_viewer.*
 import org.json.JSONObject
@@ -25,29 +26,7 @@ class Viewer : AppCompatActivity() {
         anio_viewer.text=song.anio.toString()
         album_viewer.text=song.album
     }
-    inner class SongFetch : AsyncTask<Unit, Unit, List<Cancion>>() {
-        override fun doInBackground(vararg params: Unit?): List<Cancion> {
-            val url = NetworkUtils.buildURL()
-            val resultString = NetworkUtils.getHTTPResult(url)
-
-            val resultJSON = JSONObject(resultString)
-
-            return if (resultJSON.getBoolean("ok")) {
-                SongSerializer.parseSongs(
-                    resultJSON.getJSONArray("parametro").toString()
-                )
-            } else {
-                listOf<Cancion>()
-            }
-        }
 /*
-        override fun onPostExecute(cancionInfo:String) {
-            val cancion = if(!cancionInfo.isEmpty()){
-
-            }else{
-
-            }
-            initInfo()
-        }*/
+    inner class SongFetch : AsyncTask<Unit, Unit, List<Cancion>>() {
     }
-}
+*/}
