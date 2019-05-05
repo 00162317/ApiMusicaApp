@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import com.example.apimusicaapp.adapter.Adapter
 import com.example.apimusicaapp.model.Cancion
 import com.example.apimusicaapp.utils.NetworkUtils
 import com.example.apimusicaapp.utils.SongSerializer
