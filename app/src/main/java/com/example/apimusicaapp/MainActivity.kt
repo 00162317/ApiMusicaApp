@@ -1,6 +1,7 @@
 package com.example.apimusicaapp
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -14,7 +15,11 @@ import com.example.apimusicaapp.utils.SongSerializer
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),FragmentoInfoSong.OnFragmentInteractionListener {
+    override fun landscape(song: Cancion) {
+        var fragmento=FragmentoInfoSong()
+        supportFragmentManager.beginTransaction().replace(R.id.land_segundo,fragmento).commit()
+    }
 
     lateinit var viewAdapter: Adapter
     lateinit var viewManager: LinearLayoutManager
@@ -32,6 +37,11 @@ class MainActivity : AppCompatActivity() {
             layoutManager = viewManager
         }
         SongFetch().execute()
+
+        if(resources.configuration.orientation==Configuration.ORIENTATION_LANDSCAPE){
+            supportFragmentManager.beginTransaction().replace(R.id.land_segundo,FragmentoInfoSong()).commit()
+        }
+
     }
     fun itemClick(item:Cancion){
         startActivity(Intent(this, Viewer::class.java))
@@ -51,7 +61,6 @@ class MainActivity : AppCompatActivity() {
                 listOf<Cancion>()
             }
         }
-
         override fun onPostExecute(result: List<Cancion>?) {
             if (result != null) {
                 if (result.isNotEmpty()) {

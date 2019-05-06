@@ -4,6 +4,7 @@ import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.apimusicaapp.FragmentoInfoSong
 import com.example.apimusicaapp.R
 import com.example.apimusicaapp.model.Cancion
 import com.example.apimusicaapp.utils.NetworkUtils
@@ -18,15 +19,8 @@ class Viewer : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_viewer)
+        val fragmento = FragmentoInfoSong()
+        supportFragmentManager.beginTransaction().replace(R.id.land_segundo,fragmento).commit()
     }
 
-    fun initInfo(song:Cancion){
-        nombre_viewer.text=song.name
-        artista_viewer.text=song.artista
-        anio_viewer.text=song.anio.toString()
-        album_viewer.text=song.album
-    }
-/*
-    inner class SongFetch : AsyncTask<Unit, Unit, List<Cancion>>() {
-    }
-*/}
+}
