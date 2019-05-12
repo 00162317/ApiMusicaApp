@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity(), FragmentoInfoSong.OnFragmentInteractio
     }
     fun listCancion(respuesta:List<Cancion>?){
         if (respuesta != null) {
-            /*val cancionLista = */if (respuesta.isNotEmpty()) {
+            if (respuesta.isNotEmpty()) {
                 viewAdapter.setData(respuesta)
             } else {
                 Log.d("Holi", "No se pudo encontrar los datos")
