@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.BaseColumns
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.Toast
@@ -103,4 +104,14 @@ class MainActivity : AppCompatActivity(), FragmentoInfoSong.OnFragmentInteractio
             }
         }
     }
+    /*
+    private fun leerBaseDeDatos(cadena:String,numero:Int):List<Cancion>{
+        val db = dbHelper.readableDatabase
+        val projection= arrayOf(BaseColumns._ID,
+            DatabaseContract.CancionEntry.COLUMN_NAME,
+            DatabaseContract.CancionEntry.COLUMN_ARTISTA,
+            DatabaseContract.CancionEntry.COLUMN_ANIO,
+            DatabaseContract.CancionEntry.COLUMN_ALBUM)
+        var lista = List<Cancion>()
+    }*/
 }
