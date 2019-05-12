@@ -43,8 +43,9 @@ class MainActivity : AppCompatActivity(),FragmentoInfoSong.OnFragmentInteraction
         }
 
     }
+
     fun itemClick(item:Cancion){
-        startActivity(Intent(this, Viewer::class.java))
+        startActivity(Intent(this, Viewer::class.java).putExtra("holi",item))
     }
     inner class SongFetch : AsyncTask<Unit, Unit, List<Cancion>>() {
         override fun doInBackground(vararg params: Unit?): List<Cancion> {
