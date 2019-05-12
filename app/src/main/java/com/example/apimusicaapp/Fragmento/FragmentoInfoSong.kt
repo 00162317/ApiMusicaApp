@@ -1,22 +1,20 @@
-package com.example.apimusicaapp
+package com.example.apimusicaapp.Fragmento
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.apimusicaapp.R
 import com.example.apimusicaapp.model.Cancion
-import kotlinx.android.synthetic.main.fragment_fragmento_info_song.*
 import kotlinx.android.synthetic.main.fragment_fragmento_info_song.view.*
 
 
 class FragmentoInfoSong : Fragment(){
 
     companion object {
-        fun newInstance(item : List<Cancion>):FragmentoInfoSong{
+        fun newInstance(item : List<Cancion>): FragmentoInfoSong {
             var frag  = FragmentoInfoSong()
             return frag
         }
@@ -51,6 +49,4 @@ class FragmentoInfoSong : Fragment(){
     interface OnFragmentInteractionListener {
         fun landscape(song:Cancion)
     }
-    var listener:OnFragmentInteractionListener?=null
-
 }

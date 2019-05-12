@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import com.example.apimusicaapp.Fragmento.FragmentoInfoSong
 import com.example.apimusicaapp.adapter.Adapter
 import com.example.apimusicaapp.adapter.Viewer
 import com.example.apimusicaapp.model.Cancion
@@ -15,9 +16,9 @@ import com.example.apimusicaapp.utils.SongSerializer
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 
-class MainActivity : AppCompatActivity(),FragmentoInfoSong.OnFragmentInteractionListener {
+class MainActivity : AppCompatActivity(), FragmentoInfoSong.OnFragmentInteractionListener {
     override fun landscape(song: Cancion) {
-        var fragmento=FragmentoInfoSong()
+        var fragmento= FragmentoInfoSong()
         supportFragmentManager.beginTransaction().replace(R.id.land_segundo,fragmento).commit()
     }
 
@@ -39,7 +40,9 @@ class MainActivity : AppCompatActivity(),FragmentoInfoSong.OnFragmentInteraction
         SongFetch().execute()
 
         if(resources.configuration.orientation==Configuration.ORIENTATION_LANDSCAPE){
-            supportFragmentManager.beginTransaction().replace(R.id.land_segundo,FragmentoInfoSong()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.land_segundo,
+                FragmentoInfoSong()
+            ).commit()
         }
 
     }
